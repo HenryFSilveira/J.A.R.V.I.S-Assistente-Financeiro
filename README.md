@@ -31,7 +31,7 @@ A arquitetura implementa o **gerenciamento de contexto conversacional individual
     .\venv\Scripts\Activate.ps1
 
     # 3. Instalar todas as dependências do projeto (via requirements.txt)
-    pip install -r requirements.txt
+    pip install -r requirements.txt --only-binary :all:
     ```
 
 2.  **Configuração da Chave de API:**
