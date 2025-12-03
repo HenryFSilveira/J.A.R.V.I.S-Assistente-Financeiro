@@ -1,0 +1,8 @@
+# .gitignore
+
+# Variáveis de ambiente
+.env
+
+# Ambientes virtuais
+venv/
+__pycache__/

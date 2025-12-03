@@ -1,0 +1,36 @@
+### 1. Rota de Saúde: GET /
+GET http://127.0.0.1:8000/
+Accept: application/json
+
+
+### 2. Teste de Contexto - Pablo (Início da Sessão)
+# Usuário: Pablo | Tópico: Criptoativos
+POST http://127.0.0.1:8000/chat
+Content-Type: application/json
+
+{
+    "user_id": "pablo",
+    "message": "O que são criptoativos e como eles funcionam?"
+}
+
+
+### 3. Teste de Contexto - Pablo (Continuação Persistente)
+# Usuário: Pablo | Pergunta-chave: 'Qual é o principal risco disso?'
+POST http://127.0.0.1:8000/chat
+Content-Type: application/json
+
+{
+    "user_id": "pablo",
+    "message": "Qual é o principal risco disso?"
+}
+
+
+### 4. Teste de Isolamento - Maria (Nova Sessão)
+# Usuário: Maria | Tópico: Ações (Novo Tópico para Novo Usuário)
+POST http://127.0.0.1:8000/chat
+Content-Type: application/json
+
+{
+    "user_id": "maria",
+    "message": "Quais são as diferenças entre ações ordinárias e preferenciais?"
+}
