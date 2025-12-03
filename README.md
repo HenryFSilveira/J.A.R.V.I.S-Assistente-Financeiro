@@ -1,18 +1,34 @@
-# 💰 J.A.R.V.I.S: Assistente LLM Especializado em Finanças
+## 💰 J.A.R.V.I.S: Assistente LLM Especializado em Finanças 📈
+
+O **J.A.R.V.I.S** é um assistente financeiro inteligente baseado em IA, construído como um microsserviço escalável com **FastAPI** e alimentado pelo modelo **Google Gemini**.
+
+---
 
 ## 🎯 Objetivo e Proposta do Projeto
 
-O objetivo deste projeto é o **Desenvolvimento de um Microsserviço em Python** usando o framework **FastAPI**, que atua como um Assistente Inteligente especializado em **Finanças e Investimentos**. O assistente integra-se ao modelo **Google Gemini** para fornecer análises, dicas de orçamento e explicações sobre termos e estratégias financeiras.
+O propósito central deste projeto é o **Desenvolvimento de um Microsserviço em Python** usando o framework **FastAPI**, que atua como um Assistente Inteligente especializado em **Finanças e Investimentos**.
 
-### Funcionalidade Chave
-A arquitetura implementa o **gerenciamento de contexto conversacional individual** por `user_id`, garantindo que a API mantenha o histórico de conversa de cada usuário isoladamente.
+O assistente integra-se ao modelo **Google Gemini** para fornecer aos usuários:
+* **Análises Financeiras**
+* **Dicas de Orçamento**
+* **Explicações** sobre termos e estratégias de investimento.
+
+### ✨ Funcionalidade Chave: Gerenciamento de Contexto
+
+A arquitetura implementa o **gerenciamento de contexto conversacional individual** por `user_id`. Isso garante que a API mantenha o histórico de conversa de **cada usuário isoladamente**, permitindo interações contextuais e personalizadas.
+
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
-* **Backend Framework:** **FastAPI**
-* **Modelo de IA:** Google **Gemini** (via biblioteca `google-genai`)
-* **Gestão de Contexto:** Dicionário em memória indexado por `user_id`
-* **Frontend (Interface Web):** **Streamlit**
+Este projeto utiliza uma arquitetura de microsserviço desacoplada (Backend/Frontend).
+
+| Componente | Tecnologia | Descrição |
+| :---: | :---: | :--- |
+| **Backend Framework** | **FastAPI** | Roteamento e lógica de API para o microsserviço. |
+| **Modelo de IA** | Google **Gemini** | Modelo de Linguagem Grande (LLM) para o processamento de finanças. |
+| **Gestão de Contexto** | Dicionário em Memória | Armazena e isola o histórico de chat de cada `user_id`. |
+| **Frontend (Interface Web)** | **Streamlit** | Interface de usuário simples e interativa para o assistente. |
 
 ---
 
@@ -20,54 +36,50 @@ A arquitetura implementa o **gerenciamento de contexto conversacional individual
 
 ### 1. Instruções de Instalação e Setup
 
-1.  **Clonar e Instalar Dependências:**
-    ```bash
-    # 1. Clonar o repositório
-    git clone [https://github.com/HenryFSilveira/J.A.R.V.I.S-Assistente-Financeiro.git](https://github.com/HenryFSilveira/J.A.R.V.I.S-Assistente-Financeiro.git)
-    cd J.A.R.V.I.S-Assistente-Financeiro
+1.  **Clonar e Instalar Dependências:**
+    ```bash
+    # 1. Clonar o repositório
+    git clone [https://github.com/HenryFSilveira/J.A.R.V.I.S-Assistente-Financeiro.git](https://github.com/HenryFSilveira/J.A.R.V.I.S-Assistente-Financeiro.git)
+    cd J.A.R.V.I.S-Assistente-Financeiro
 
-    # 2. Criar o ambiente virtual
-    python -m venv venv
+    # 2. Criar o ambiente virtual
+    python -m venv venv
 
-    # 3. Ativar o ambiente virtual
-    # (WINDOWS - PowerShell)
-    
-    .\venv\Scripts\Activate.ps1
-    
-    # (MACBOOK / LINUX)
-    source venv/bin/activate
+    # 3. Ativar o ambiente virtual
+    # (WINDOWS - PowerShell): .\venv\Scripts\Activate.ps1
+    # (MACBOOK / LINUX): source venv/bin/activate
 
-    # 4. Instalar todas as dependências do projeto (via requirements.txt)
-    pip install -r requirements.txt --only-binary :all:
-    ```
+    # 4. Instalar todas as dependências do projeto (via requirements.txt)
+    pip install -r requirements.txt --only-binary :all:
+    ```
 
-2.  **Configuração da Chave de API:**
-    Crie um arquivo chamado **`.env`** na raiz do projeto e insira sua chave de API.
+2.  **Configuração da Chave de API:**
+    Crie um arquivo chamado **`.env`** na raiz do projeto e insira sua chave de API.
 
-    *Atenção: O `.gitignore` impede que este arquivo seja enviado ao repositório, mantendo sua chave segura.*
+    > *Atenção: O `.gitignore` impede que este arquivo seja enviado ao repositório, mantendo sua chave segura.*
 
-    ```env
-    # .env
-    GEMINI_API_KEY="SUA_CHAVE_DE_API_GEMINI_AQUI"
-    ```
+    ```env
+    # .env
+    GEMINI_API_KEY="SUA_CHAVE_DE_API_GEMINI_AQUI"
+    ```
 
 ### 2. 🚀 Como Rodar o Projeto
 
 O projeto é composto por **dois processos** que devem ser executados em terminais diferentes (ambos com o ambiente `(venv)` ativado):
 
-1.  **🟢 Iniciar o Backend (API FastAPI):**
-    O Backend deve ser iniciado primeiro. Deixe-o rodando no primeiro terminal:
-    ```bash
-    uvicorn main:app --reload --port 8000
-    ```
-    *O console deve mostrar: `Cliente Gemini inicializado com sucesso!`*
+1.  **🟢 Iniciar o Backend (API FastAPI):**
+    O Backend deve ser iniciado primeiro. Deixe-o rodando no primeiro terminal:
+    ```bash
+    uvicorn main:app --reload --port 8000
+    ```
+    *O console deve mostrar: `Cliente Gemini inicializado com sucesso!`*
 
-2.  **🟢 Iniciar o Frontend (Streamlit):**
-    O Frontend fornece a interface. Abra um segundo terminal (ATIVE O VENV!) e execute:
-    ```bash
-    python -m streamlit run app.py
-    ```
-    A interface web será aberta em `http://localhost:8501`.
+2.  **🟢 Iniciar o Frontend (Streamlit):**
+    O Frontend fornece a interface. Abra um segundo terminal (ATIVE O VENV!) e execute:
+    ```bash
+    python -m streamlit run app.py
+    ```
+    A interface web será aberta em `http://localhost:8501`.
 
 ---
 
