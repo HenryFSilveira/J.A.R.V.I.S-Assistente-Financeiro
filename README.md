@@ -74,4 +74,4 @@ Os testes em **`tests.http`** provam que o contexto é mantido e isolado, usando
 | :---: | :---: | :--- | :--- |
 | **Teste 2** | `pablo` | `O que são criptoativos?` | **Início de Sessão:** Inicia a sessão de Pablo. |
 | **Teste 3** | `pablo` | `Qual é o principal risco disso?` | **Contexto Persistente:** A resposta é sobre os **riscos de criptoativos**. |
-| **Teste 4** | `maria` | `O que é Selic?` | **Isolamento de Sessão:** A resposta é sobre **Selic** (ignora o contexto de Pablo). |
+| **Teste 4** | `maria` | `Quais são as diferenças entre ações ordinárias e preferenciais?` | **Isolamento de Sessão:** A resposta é sobre **Ações** (ignora o contexto de Pablo). |
