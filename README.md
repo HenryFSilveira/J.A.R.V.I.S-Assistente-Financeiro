@@ -20,47 +20,54 @@ A arquitetura implementa o **gerenciamento de contexto conversacional individual
 
 ### 1. Instruções de Instalação e Setup
 
-1.  **Clonar e Instalar Dependências:**
-    ```bash
-    # 1. Clonar o repositório
-    git clone [https://github.com/HenryFSilveira/J.A.R.V.I.S-Assistente-Financeiro.git](https://github.com/HenryFSilveira/J.A.R.V.I.S-Assistente-Financeiro.git)
-    cd J.A.R.V.I.S-Assistente-Financeiro
+1.  **Clonar e Instalar Dependências:**
+    ```bash
+    # 1. Clonar o repositório
+    git clone [https://github.com/HenryFSilveira/J.A.R.V.I.S-Assistente-Financeiro.git](https://github.com/HenryFSilveira/J.A.R.V.I.S-Assistente-Financeiro.git)
+    cd J.A.R.V.I.S-Assistente-Financeiro
 
-    # 2. Criar e ativar o ambiente virtual
-    python -m venv venv
-    .\venv\Scripts\Activate.ps1
+    # 2. Criar o ambiente virtual
+    python -m venv venv
 
-    # 3. Instalar todas as dependências do projeto (via requirements.txt)
-    pip install -r requirements.txt --only-binary :all:
-    ```
+    # 3. Ativar o ambiente virtual
+    # (WINDOWS - PowerShell)
+    
+    .\venv\Scripts\Activate.ps1
+    
+    # (MACBOOK / LINUX)
+    source venv/bin/activate
 
-2.  **Configuração da Chave de API:**
-    Crie um arquivo chamado **`.env`** na raiz do projeto e insira sua chave de API.
+    # 4. Instalar todas as dependências do projeto (via requirements.txt)
+    pip install -r requirements.txt --only-binary :all:
+    ```
 
-    *Atenção: O `.gitignore` impede que este arquivo seja enviado ao repositório, mantendo sua chave segura.*
+2.  **Configuração da Chave de API:**
+    Crie um arquivo chamado **`.env`** na raiz do projeto e insira sua chave de API.
 
-    ```env
-    # .env
-    GEMINI_API_KEY="SUA_CHAVE_DE_API_GEMINI_AQUI"
-    ```
+    *Atenção: O `.gitignore` impede que este arquivo seja enviado ao repositório, mantendo sua chave segura.*
+
+    ```env
+    # .env
+    GEMINI_API_KEY="SUA_CHAVE_DE_API_GEMINI_AQUI"
+    ```
 
 ### 2. 🚀 Como Rodar o Projeto
 
 O projeto é composto por **dois processos** que devem ser executados em terminais diferentes (ambos com o ambiente `(venv)` ativado):
 
-1.  **🟢 Iniciar o Backend (API FastAPI):**
-    O Backend deve ser iniciado primeiro. Deixe-o rodando no primeiro terminal:
-    ```bash
-    uvicorn main:app --reload --port 8000
-    ```
-    *O console deve mostrar: `Cliente Gemini inicializado com sucesso!`*
+1.  **🟢 Iniciar o Backend (API FastAPI):**
+    O Backend deve ser iniciado primeiro. Deixe-o rodando no primeiro terminal:
+    ```bash
+    uvicorn main:app --reload --port 8000
+    ```
+    *O console deve mostrar: `Cliente Gemini inicializado com sucesso!`*
 
-2.  **🟢 Iniciar o Frontend (Streamlit):**
-    O Frontend fornece a interface. Abra um segundo terminal (ATIVE O VENV!) e execute:
-    ```bash
-    python -m streamlit run app.py
-    ```
-    A interface web será aberta em `http://localhost:8501`.
+2.  **🟢 Iniciar o Frontend (Streamlit):**
+    O Frontend fornece a interface. Abra um segundo terminal (ATIVE O VENV!) e execute:
+    ```bash
+    python -m streamlit run app.py
+    ```
+    A interface web será aberta em `http://localhost:8501`.
 
 ---
 
