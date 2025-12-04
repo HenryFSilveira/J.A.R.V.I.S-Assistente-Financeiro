@@ -1,13 +1,14 @@
-# ARQUIVO: main.py
+# main.py 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+from google.genai.client import Chat 
 import os
 from typing import Dict, Optional
 
-# Carrega variáveis de ambiente (como a GEMINI_API_KEY) do arquivo .env
+# Carrega variáveis de ambiente 
 load_dotenv() 
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
@@ -21,8 +22,8 @@ SYSTEM_INSTRUCTION = (
 
 client: Optional[genai.Client] = None
 # Dicionário global para armazenar as sessões de chat. 
-# A chave é o user_id e o valor é a instância genai.Chat, mantendo o contexto conversacional.
-CHAT_SESSIONS: Dict[str, genai.Chat] = {} 
+# A chave é o user_id e o valor é a instância Chat, mantendo o contexto conversacional.
+CHAT_SESSIONS: Dict[str, Chat] = {} # <--- CORRIGIDO: Usa a classe Chat importada
 
 if GEMINI_API_KEY:
     try:
