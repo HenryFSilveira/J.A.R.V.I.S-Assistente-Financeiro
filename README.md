@@ -1,4 +1,4 @@
-## 💰 J.A.R.V.I.S: Assistente LLM Especializado em Finanças 📈
+## 💰 J.A.R.V.I.S: Assistente LLM Especializado em Finanças 
 
 O **J.A.R.V.I.S** é um assistente financeiro inteligente baseado em IA, construído como um microsserviço escalável com **FastAPI** e alimentado pelo modelo **Google Gemini**.
 
@@ -32,36 +32,71 @@ Este projeto utiliza uma arquitetura de microsserviço desacoplada (Backend/Fron
 
 ---
 
-## ⚙️ Como Utilizar o J.A.R.V.I.S
+## ⚙️ Como Utilizar o J.A.R.V.I.S (Windows & MacOS)
 
 ### 1. Instruções de Instalação e Setup
 
-1.  **Clonar e Instalar Dependências:**
+O projeto requer o Conda/Miniconda/Miniforge para a instalação correta de dependências binárias complexas, especialmente em ambientes macOS (Apple Silicon) e Windows.
+
+---
+
+#### 1.1. ATENÇÃO: Configuração de Terminal
+
+Para garantir que o comando `conda` seja reconhecido e o ambiente ativado corretamente:
+
+* **Usuários Windows:** É obrigatório usar o **"Miniconda Prompt"** (ou "Anaconda Prompt") em vez do PowerShell ou Prompt de Comando padrão.
+* **Usuários macOS/Linux:** Utilize o terminal padrão (`Terminal`, `iTerm`, etc.), garantindo que o Conda/Miniforge esteja devidamente configurado (geralmente via `conda init`).
+
+---
+
+#### 1.2. Pré-requisito: Instalar Conda/Miniforge/Miniconda
+
+Certifique-se de ter o gerenciador de ambientes Conda/Miniforge instalado.
+
+| Sistema Operacional | Instalador Recomendado | Link para Download |
+| :---: | :---: | :---: |
+| **Windows** | **Miniconda** (Installer .exe) | [Site oficial da Anaconda (Miniconda)](https://www.anaconda.com/download) |
+| **macOS** | **Miniforge** (Para arquitetura Apple Silicon/ARM64) | [Página de Releases do Miniforge (GitHub)](https://github.com/conda-forge/miniforge/releases) |
+
+---
+
+#### 1.3. Clonar e Configurar o Ambiente
+
+1.  **Clonar e Navegar:**
+
     ```bash
-    # 1. Clonar o repositório
     git clone [https://github.com/HenryFSilveira/J.A.R.V.I.S-Assistente-Financeiro.git](https://github.com/HenryFSilveira/J.A.R.V.I.S-Assistente-Financeiro.git)
     cd J.A.R.V.I.S-Assistente-Financeiro
-
-    # 2. Criar o ambiente virtual
-    python -m venv venv
-
-    # 3. Ativar o ambiente virtual
-    # (WINDOWS - PowerShell): .\venv\Scripts\Activate.ps1
-    # (MACBOOK / LINUX): source venv/bin/activate
-
-    # 4. Instalar todas as dependências do projeto (via requirements.txt)
-    pip install -r requirements.txt --only-binary :all:
     ```
 
-2.  **Configuração da Chave de API:**
-    Crie um arquivo chamado **`.env`** na raiz do projeto e insira sua chave de API.
+2.  **Criar e Ativar o Ambiente (Python 3.11):**
 
-    > *Atenção: O `.gitignore` impede que este arquivo seja enviado ao repositório, mantendo sua chave segura.*
-
-    ```env
-    # .env
-    GEMINI_API_KEY="SUA_CHAVE_DE_API_GEMINI_AQUI"
+    ```bash
+    conda create -n jarvis_prof python=3.11
+    conda activate jarvis_prof 
     ```
+
+3.  **Instalar Dependências (Em 2 Etapas):**
+
+    *Instale as dependências complexas via Conda:*
+    ```bash
+    conda install -c conda-forge fastapi uvicorn pydantic python-dotenv
+    ```
+
+    *Instale o restante (Streamlit e Gemini) via Pip:*
+    ```bash
+    pip install google-genai streamlit requests
+    ```
+---
+
+#### 1.4. Configuração da Chave de API:
+
+Crie um arquivo chamado **`.env`** na raiz do projeto e insira sua chave de API que é criada através do Google AI Studio, conforme o exemplo abaixo:
+
+```env
+# .env
+GEMINI_API_KEY="SUA_CHAVE_DE_API_GEMINI_AQUI"
+```
 
 ### 2. 🚀 Como Rodar o Projeto
 
@@ -70,16 +105,23 @@ O projeto é composto por **dois processos** que devem ser executados em termina
 1.  **🟢 Iniciar o Backend (API FastAPI):**
     O Backend deve ser iniciado primeiro. Deixe-o rodando no primeiro terminal:
     ```bash
-    uvicorn main:app --reload --port 8000
+    uvicorn main:app --reload
     ```
     *O console deve mostrar: `Cliente Gemini inicializado com sucesso!`*
 
 2.  **🟢 Iniciar o Frontend (Streamlit):**
-    O Frontend fornece a interface. Abra um segundo terminal (ATIVE O VENV!) e execute:
+    O Frontend fornece a interface. Abra um segundo terminal e execute:
     ```bash
-    python -m streamlit run app.py
+    streamlit run app.py
     ```
     A interface web será aberta em `http://localhost:8501`.
+    
+
+3.  **🟢 Acesso à Documentação da API: A documentação interativa (Swagger UI) do FastAPI**
+    O Frontend fornece a interface. Abra um segundo terminal e execute:
+    ```
+    Pode ser acessada em: `http://127.0.0.1:8000/docs`.
+    
 
 ---
 
@@ -94,3 +136,6 @@ Os testes em **`tests.http`** provam que o contexto é mantido e isolado, usando
 | **Teste 2** | `pablo` | `O que são criptoativos?` | **Início de Sessão:** Inicia a sessão de Pablo. |
 | **Teste 3** | `pablo` | `Qual é o principal risco disso?` | **Contexto Persistente:** A resposta é sobre os **riscos de criptoativos**. |
 | **Teste 4** | `maria` | `Quais são as diferenças entre ações ordinárias e preferenciais?` | **Isolamento de Sessão:** A resposta é sobre **Ações** (ignora o contexto de Pablo). |
+
+
+
