@@ -119,7 +119,7 @@ O projeto é composto por **dois processos** que devem ser executados em termina
 
 3.  **🟢 Acesso à Documentação da API: A documentação interativa (Swagger UI) do FastAPI**
     O Frontend fornece a interface. Abra um segundo terminal e execute:
-    ```
+    
     Pode ser acessada em: `http://127.0.0.1:8000/docs`.
     
 
