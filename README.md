@@ -83,9 +83,9 @@ Certifique-se de ter o gerenciador de ambientes Conda/Miniforge instalado.
     conda install -c conda-forge fastapi uvicorn pydantic python-dotenv
     ```
 
-    *Instale o restante (Streamlit e Gemini) via Pip:*
+    *Instalação via Pip (Usando o requirements.txt)*
     ```bash
-    pip install google-genai streamlit requests
+    pip install -r requirements.txt
     ```
 ---
 
